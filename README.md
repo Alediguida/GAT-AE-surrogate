@@ -30,7 +30,7 @@ While this repository contains the 2D sandbox code, the methodology was successf
 
 ### 2. Surface Pressure Field Reconstruction
 ![Pressure Field Comparison](assets/pressure_field.png)
-> *Left: Ground Truth CFD | Middle: Hybrid GNN Prediction | Right: Mean Absolute Error (MAE)*
+> *Hybrid GNN Prediction and Mean Absolute Error (MAE)*
 
 ### 3. Drag Coefficient ($) Parity Plot
 ![Cd Parity Plot](assets/parity_plot.png)
