@@ -42,6 +42,6 @@ While this repository contains the 2D sandbox code, the methodology was successf
 
 To experiment with the core concepts, you can run the simplified 2D pipeline directly in Google Colab:
 
-1. Open the **	rain.ipynb** notebook.
+1. Open the **train.ipynb** notebook.
 2. The notebook is fully automated: it will download the toy dataset, generate the k-NN graphs, train the Scout, perform smart subsampling, train the punitive Autoencoder, and generate the final hybrid parity plots.
 
