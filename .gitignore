@@ -1,0 +1,15 @@
+# Ignore trained model weights
+*.pt
+*.pth
+*.h5
+
+# Ignore raw/processed full datasets
+data/Risultati_Simulazioni/
+processed_data/
+refined_graphs/
+*.zip
+
+# Python/System cache
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
