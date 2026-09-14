@@ -6,7 +6,7 @@
 
 This repository contains a **sandbox implementation** of a Graph Neural Network (GNN) surrogate model designed for aerodynamic field prediction. 
 
-The code presented here acts as a simplified 2D pipeline demonstrating the core architecture and methodologies developed during my Master\'s Thesis, which originally targeted highly complex 3D aerodynamic simulations on high-speed trains.
+The code presented here acts as a simplified 2D pipeline demonstrating the core architecture and methodologies developed during my Master's Thesis, which originally targeted highly complex 3D aerodynamic simulations on high-speed trains.
 
 ## 🚀 Core Methodology (The 2-Stage Pipeline)
 
@@ -14,9 +14,9 @@ To handle massive computational fluid dynamics (CFD) meshes without running out 
 
 1. **Physics Scout GAT**: A lightweight Graph Attention Network predicts a coarse pressure field across the entire domain.
 2. **Smart Subsampling**: Nodes are ranked using an *Importance Score* (50% physical gradient magnitude + 50% absolute pressure value). Only the most critical nodes (e.g., wakes, stagnation points) are kept.
-3. **Deep GAT Autoencoder**: A heavy Autoencoder reconstructs the high-fidelity pressure field *only* on the subsampled critical nodes, guided by a punitive loss function ( \times Importance^3$).
-4. **Hybrid Merging**: The detailed Autoencoder predictions are mapped back over the Scout\'s coarse field.
-5. **Latent Space MLP**: The compressed global bottleneck vector $ extracted from the Autoencoder is used to predict the global aerodynamic Drag Coefficient ($).
+3. **Deep GAT Autoencoder**: A heavy Autoencoder reconstructs the high-fidelity pressure field *only* on the subsampled critical nodes, guided by a punitive loss function ($Loss \times Importance^3$).
+4. **Hybrid Merging**: The detailed Autoencoder predictions are mapped back over the Scout's coarse field.
+5. **Latent Space MLP**: The compressed global bottleneck vector $z$ extracted from the Autoencoder is used to predict the global aerodynamic Drag Coefficient ($C_d$).
 
 ---
 
@@ -30,11 +30,11 @@ While this repository contains the 2D sandbox code, the methodology was successf
 
 ### 2. Surface Pressure Field Reconstruction
 ![Pressure Field Comparison](assets/pressure_field.png)
-> *Hybrid GNN Prediction and Mean Absolute Error (MAE)*
+> *Left: Ground Truth CFD | Middle: Hybrid GNN Prediction | Right: Mean Absolute Error (MAE)*
 
-### 3. Drag Coefficient ($) Parity Plot
+### 3. Drag Coefficient ($C_d$) Parity Plot
 ![Cd Parity Plot](assets/parity_plot.png)
-> *The MLP trained on the Autoencoder\'s latent space $ achieves extremely high accuracy in predicting the global drag coefficient.*
+> *The MLP trained on the Autoencoder's latent space $z$ achieves extremely high accuracy in predicting the global drag coefficient.*
 
 ---
 
@@ -42,6 +42,5 @@ While this repository contains the 2D sandbox code, the methodology was successf
 
 To experiment with the core concepts, you can run the simplified 2D pipeline directly in Google Colab:
 
-1. Open the **train.ipynb** notebook.
+1. Open the **`train.ipynb`** notebook.
 2. The notebook is fully automated: it will download the toy dataset, generate the k-NN graphs, train the Scout, perform smart subsampling, train the punitive Autoencoder, and generate the final hybrid parity plots.
-
